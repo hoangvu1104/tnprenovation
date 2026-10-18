@@ -1,5 +1,11 @@
 # Tiến độ TNP Rénovation
 
+## 2026-10-18
+
+- Chuẩn bị GitHub Actions cho push main và chạy thủ công, kiểm tra PHP rồi upload FTPS.
+- Chỉ upload các tệp website; credentials lấy từ GitHub Secrets, không xóa tệp hosting.
+- Chưa deploy thật; chờ xác nhận FTPS, Document Root và thiết lập Secrets.
+
 ## 2026-10-17
 
 - Tạo website PHP thuần, ưu tiên tuyển dụng theo poster và danh thiếp được cung cấp.

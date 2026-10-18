@@ -1,0 +1,56 @@
+name: Deploy PHP website to GoDaddy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: godaddy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    environment:
+      name: production
+      url: https://tnprenovation.vietcanadianlive.com/
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Check PHP syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          command -v php
+          while IFS= read -r -d '' file; do
+            php -l "$file"
+          done < <(find index.php app config views -name '*.php' -print0)
+
+      - name: Validate deployment files
+        run: python3 scripts/deploy_ftps.py --check
+
+      - name: Upload website through encrypted FTP
+        env:
+          FTP_HOST: ${{ secrets.GODADDY_FTP_HOST }}
+          FTP_USERNAME: ${{ secrets.GODADDY_FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.GODADDY_FTP_PASSWORD }}
+          FTP_DIRECTORY: ${{ secrets.GODADDY_FTP_DIRECTORY }}
+        run: python3 scripts/deploy_ftps.py
+
+      - name: Verify public website
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --retry 3 --max-time 30 \
+            'https://tnprenovation.vietcanadianlive.com/' > "$RUNNER_TEMP/tnp-home.html"
+          grep -q 'assets/css/header.css' "$RUNNER_TEMP/tnp-home.html"
+          curl --fail --silent --show-error --retry 3 --max-time 30 \
+            'https://tnprenovation.vietcanadianlive.com/favicon.svg' > /dev/null

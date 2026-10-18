@@ -11,6 +11,8 @@ Thumbs.db
 
 # Runtime files
 *.log
+__pycache__/
+*.pyc
 
 # Original reference materials; website assets are in assets/images/.
 /Business Card.png
