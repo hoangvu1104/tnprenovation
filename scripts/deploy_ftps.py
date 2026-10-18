@@ -64,19 +64,23 @@ def deploy(files):
 
     context = ssl.create_default_context()
     with ftplib.FTP_TLS(context=context, timeout=60) as ftp:
+        print("Connecting to FTPS server...", flush=True)
         ftp.connect(host, 21)
+        print("Authenticating with verified TLS...", flush=True)
         ftp.login(username, password)
         ftp.prot_p()
         ftp.set_pasv(True)
         # Do not create the configured root: a typo must fail before any upload.
         ftp.cwd(directory)
         root_directory = ftp.pwd()
+        print("FTPS login and target directory verified.", flush=True)
         for file in files:
             relative = PurePosixPath(file.relative_to(PROJECT_ROOT).as_posix())
             ensure_directory(ftp, root_directory, relative.parent)
+            print("Uploading: " + relative.as_posix(), flush=True)
             with file.open("rb") as stream:
                 ftp.storbinary("STOR " + relative.name, stream)
-            print("Uploaded: " + relative.as_posix())
+            print("Uploaded: " + relative.as_posix(), flush=True)
     print("Deployment upload complete.")
 
 

@@ -4,7 +4,8 @@
 
 - Chuẩn bị GitHub Actions cho push main và chạy thủ công, kiểm tra PHP rồi upload FTPS.
 - Chỉ upload các tệp website; credentials lấy từ GitHub Secrets, không xóa tệp hosting.
-- Chưa deploy thật; chờ xác nhận FTPS, Document Root và thiết lập Secrets.
+- Đã xác minh hostname FTPS có chứng chỉ hợp lệ và thư mục `/` của tài khoản ánh xạ đúng Document Root TNP bằng đối chiếu `test.html` qua FTPS/HTTPS.
+- Đã thiết lập đủ GitHub Secrets và khởi chạy workflow deploy production.
 
 ## 2026-10-17
 

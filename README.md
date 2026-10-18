@@ -26,4 +26,4 @@ Tại thư mục dự án: `php -S 127.0.0.1:8080`. Mở `http://127.0.0.1:8080`
 
 Chưa có gửi email phía máy chủ, lưu hồ sơ hoặc upload CV. Nút email dùng `mailto:` để mở ứng dụng email của người dùng; người dùng tự đính kèm CV và gửi. Không có biểu mẫu POST nên chưa phát sinh luồng CSRF. Không có thông tin bí mật trong cấu hình hiện tại.
 
-Đã chuẩn bị GitHub Actions để deploy qua FTPS khi push lên `main`; xem [hướng dẫn cấu hình](docs/DEPLOYMENT.md). Chưa xác minh kết nối hosting hoặc deploy thật vì chưa có cấu hình tài khoản và thư mục đích. Khôi phục bằng bản sao lưu nếu cần rollback; không có migration cơ sở dữ liệu.
+Đã cấu hình GitHub Actions để deploy qua FTPS khi push lên `main`; xem [hướng dẫn cấu hình](docs/DEPLOYMENT.md). Kết nối TLS và ánh xạ thư mục FTP đã được xác minh với subdomain TNP. Kiểm tra kết quả deploy trong GitHub Actions. Khôi phục bằng bản sao lưu nếu cần rollback; không có migration cơ sở dữ liệu.

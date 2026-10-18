@@ -4,7 +4,7 @@ Workflow `.github/workflows/deploy-godaddy.yml` chạy khi push lên `main` ho�
 
 ## Cấu hình bắt buộc trước lần deploy đầu
 
-Hiện chưa xác nhận Document Root, FTP host hoặc khả năng FTPS của tài khoản GoDaddy. URL website không xác định được các thông tin này. Bản cấu hình chuẩn bị dùng explicit FTPS qua cổng 21, xác thực chứng chỉ TLS và mã hóa cả kết nối dữ liệu. Không tự chuyển sang FTP không mã hóa.
+Đã xác nhận explicit FTPS qua cổng 21 với hostname `p3plzcpnl503791.prod.phx3.secureserver.net`, chứng chỉ TLS hợp lệ. Document Root trong cPanel là `/home/xxkttpus7wla/public_html/tnprenovation.vietcanadianlive.com`. Tài khoản FTP nhìn thư mục này tại `/`: đã đối chiếu nội dung `test.html` tải từ FTPS với HTTPS của subdomain và xác nhận trùng nhau. Kết nối mã hóa cả điều khiển và dữ liệu, không tự chuyển sang FTP không mã hóa.
 
 1. Trong cPanel → Domains, tìm đúng subdomain và ghi lại Document Root. Không mặc định dùng `public_html` vì có thể là thư mục của website khác.
 2. Trong cPanel → FTP Accounts, tạo tài khoản riêng giới hạn vào đúng Document Root của TNP. Lấy FTP hostname từ cấu hình kết nối do hosting cung cấp, không mặc định hostname là subdomain. Chứng chỉ TLS phải hợp lệ với hostname.
@@ -38,4 +38,4 @@ Python chỉ chạy trên GitHub Actions, dùng thư viện chuẩn, không cài
 
 ## Trạng thái
 
-Chưa thực hiện deploy thật: đang chờ thông tin hosting và GitHub Secrets. Nếu hosting chỉ hỗ trợ SFTP, cần đổi script/workflow phù hợp trước khi chạy.
+Đã cấu hình đủ bốn GitHub Repository Secrets cho hostname, tài khoản, mật khẩu và thư mục `/`. Workflow production dùng các Secrets này. Xem kết quả từng lần deploy trong tab Actions của repository.
