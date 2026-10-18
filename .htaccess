@@ -1,0 +1,6 @@
+Options -Indexes
+DirectoryIndex index.php
+
+<FilesMatch "^(AGENTS\.md|README\.md|CODEX-PROGRESS\.md|company\.php)$">
+    Require all denied
+</FilesMatch>

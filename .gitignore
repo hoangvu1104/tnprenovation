@@ -1,0 +1,18 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+
+# Editor and operating-system files
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Runtime files
+*.log
+
+# Original reference materials; website assets are in assets/images/.
+/Business Card.png
+/Logo.png
+/TNP_Business_Card_Proofed_2_Sides.pdf

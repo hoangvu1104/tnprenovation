@@ -1,0 +1,1 @@
+<footer><div class="container footer-inner"><div><strong><?= escapeHtml($company['name']) ?></strong><p>Building better spaces, inside & out.</p></div><div><span><?= escapeHtml($company['location']) ?></span><p>© <?= date('Y') ?> TNP Rénovation Inc.</p></div></div></footer>
