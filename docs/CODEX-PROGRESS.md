@@ -6,6 +6,7 @@
 - Chỉ upload các tệp website; credentials lấy từ GitHub Secrets, không xóa tệp hosting.
 - Đã xác minh hostname FTPS có chứng chỉ hợp lệ và thư mục `/` của tài khoản ánh xạ đúng Document Root TNP bằng đối chiếu `test.html` qua FTPS/HTTPS.
 - Đã thiết lập đủ GitHub Secrets và khởi chạy workflow deploy production.
+- Workflow push main 39158462309 đã deploy FTPS và kiểm tra HTTPS thành công. Trang chủ, CSS header và favicon trả HTTP 200; truy cập trực tiếp config, views và app trả HTTP 403.
 
 ## 2026-10-17
 

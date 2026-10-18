@@ -39,3 +39,5 @@ Python chỉ chạy trên GitHub Actions, dùng thư viện chuẩn, không cài
 ## Trạng thái
 
 Đã cấu hình đủ bốn GitHub Repository Secrets cho hostname, tài khoản, mật khẩu và thư mục `/`. Workflow production dùng các Secrets này. Xem kết quả từng lần deploy trong tab Actions của repository.
+
+Lần chạy push `main` 39158462309 đã hoàn tất thành công, bao gồm upload và kiểm tra HTTPS. Truy cập trực tiếp các tệp PHP trong config, views và app đã được kiểm tra và trả HTTP 403.
